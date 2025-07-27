@@ -1,0 +1,11 @@
+.about {
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.heading {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #0d47a1;
+}

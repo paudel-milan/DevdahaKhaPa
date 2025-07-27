@@ -1,0 +1,29 @@
+.hero {
+  background-color: #e3f2fd;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 2.5rem;
+  color: #0d47a1;
+}
+.subtitle {
+  font-size: 1.2rem;
+  color: #37474f;
+}
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}
