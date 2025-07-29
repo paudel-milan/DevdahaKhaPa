@@ -24,14 +24,14 @@ export default function MainHeader() {
             <FaPhone className={styles.contactIcon} aria-hidden="true" /> {/* Hide decorative icon from screen readers */}
             <div className={styles.contactTextGroup}>
               <span className={styles.contactLabel}>Call Us Today</span> {/* Use span for label if not heading */}
-              <a href="tel:+97771402402" className={styles.contactValue}>+977-71-402402</a>
+              <a href="tel:+97771402402" className={styles.contactValue}>+977-71-577590</a>
             </div>
           </div>
           <div className={styles.contactItem}>
             <FaEnvelope className={styles.contactIcon} aria-hidden="true" /> {/* Hide decorative icon from screen readers */}
             <div className={styles.contactTextGroup}>
               <span className={styles.contactLabel}>Email Us</span>
-              <a href="mailto:info@devdahakhanepani.org.np" className={styles.contactValue}>info@devdahakhanepani.org.np</a>
+              <a href="mailto:info@devdahakhanepani.org.np" className={styles.contactValue}> devdaha.dwssa@gmail.com</a>
             </div>
           </div>
         </div>

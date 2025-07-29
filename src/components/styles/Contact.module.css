@@ -1,24 +1,10 @@
-/* Variables (can be imported from global styles) */
-:root {
-  --primary-color: #0056b3;
-  --primary-dark-color: #003d80;
-  --secondary-color: #f0f4f8; /* Background for sections (light grey) */
-  --alternate-section-bg: #ffffff; /* New: Pure white background for alternating sections */
-  --text-dark: #333333;
-  --text-light: #ffffff;
-  --heading-color: #1a1a1a;
-  --card-bg: #ffffff;
-  --border-color: #e0e0e0;
-  --transition-speed: 0.3s ease;
-  --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
-  --input-border: #cccccc;
-  --input-focus-border: var(--primary-color);
-}
+/* src/components/styles/Contact.module.css */
 
 .contactSection {
-  padding: 80px 0;
-  background-color: var(--alternate-section-bg); /* CHANGED: Now uses pure white */
-  color: var(--text-dark);
+  padding: 80px 0; /* Consistent vertical padding */
+  background-color: var(--bg-alternate, #F8F9FA); /* Use bg-alternate for this section */
+  color: var(--text-dark, #333333);
+  box-sizing: border-box;
 }
 
 .container {
@@ -28,11 +14,10 @@
 }
 
 .heading {
-  font-size: 2.8em;
-  font-weight: 700;
-  color: var(--heading-color);
+  font-size: 2.5em; /* Consistent with other section headings */
+  color: var(--primary-color, #214175);
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   position: relative;
   padding-bottom: 15px;
 }
@@ -45,166 +30,194 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color, #EE8C19);
   border-radius: 2px;
 }
 
 .englishText {
   font-size: 0.7em;
-  font-weight: 400;
-  color: #666;
+  color: var(--text-muted, #6c757d);
+  font-weight: 500;
   display: block;
   margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contentWrapper {
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  gap: 40px; /* Space between contact info and form columns */
+  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+  align-items: flex-start; /* Align columns to the top */
 }
 
-.contactInfo,
-.contactForm {
-  background-color: var(--card-bg);
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: var(--box-shadow-light);
-  flex: 1;
-  min-width: 350px;
+/* --- Contact Information Column --- */
+.contactInfo {
+  flex: 1; /* Allows it to take available space */
+  min-width: 300px; /* Minimum width before stacking */
+  background-color: var(--bg-light, #FFFFFF); /* White background for info card */
+  padding: 30px;
+  border-radius: var(--border-radius-large, 8px);
+  box-shadow: var(--shadow-light, 0 0.25rem 0.75rem rgba(0,0,0,0.1));
+  display: flex; /* Use flex for internal layout */
+  flex-direction: column;
+  gap: 20px; /* Space between info items */
 }
 
 .subHeading {
-  font-size: 2.2em;
-  color: var(--primary-dark-color);
-  margin-bottom: 25px;
-  font-weight: 600;
+  font-size: 1.8em;
+  color: var(--primary-color, #214175);
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-light-brown-tan, #C6B7A6);
 }
 
 .introText {
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 30px;
+  font-size: 1em;
+  color: var(--text-dark, #333333);
+  margin-bottom: 25px;
+  line-height: 1.7;
 }
 
 .infoItem {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  gap: 15px;
+  align-items: flex-start; /* Align icon and text at the top */
+  gap: 15px; /* Space between icon and text */
 }
 
 .infoIcon {
   font-size: 1.8em;
-  color: var(--primary-color);
-  margin-top: 3px;
-  flex-shrink: 0;
+  color: var(--accent-color, #EE8C19); /* Accent color for icons */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  margin-top: 2px; /* Slight adjustment for visual alignment */
 }
 
 .infoItem strong {
-  display: block;
+  display: block; /* Make label bold and on its own line */
   font-size: 1.1em;
-  color: var(--heading-color);
+  color: var(--primary-dark-color, #19386A);
   margin-bottom: 5px;
 }
 
 .infoItem p {
-  margin: 0;
-  font-size: 1em;
-  color: #666;
+  margin: 0; /* Remove default paragraph margin */
+  font-size: 0.95em;
+  color: var(--text-dark, #333333);
   line-height: 1.5;
 }
 
-.infoItem a {
-  color: var(--primary-color);
+.infoItem a.contactLink {
+  color: var(--text-dark, #333333);
   text-decoration: none;
-  transition: color var(--transition-speed);
+  transition: color var(--transition-speed-fast, 0.2s);
 }
 
-.infoItem a:hover {
-  color: var(--primary-dark-color);
+.infoItem a.contactLink:hover {
+  color: var(--primary-color, #214175);
   text-decoration: underline;
 }
 
+/* --- Google Map --- */
 .mapContainer {
-  margin-top: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: var(--box-shadow-light);
+  margin-top: 30px; /* Space above the map */
+  width: 100%;
+  border-radius: var(--border-radius-large, 8px);
+  overflow: hidden; /* Ensures map respects border-radius */
+  box-shadow: var(--shadow-medium, 0 0.4rem 0.8rem rgba(0,0,0,0.15));
 }
 
 .mapHeading {
-  font-size: 1.5em;
-  color: var(--primary-dark-color);
-  margin-bottom: 15px;
-  font-weight: 600;
+  font-size: 1.4em;
+  color: var(--primary-color, #214175);
   text-align: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
 }
 
-/* Form Styling */
+.mapContainer iframe {
+  width: 100%;
+  border: 0; /* Removed default iframe border */
+  height: 300px; /* Fixed height for consistency */
+  display: block; /* Remove extra space below iframe */
+}
+
+
+/* --- Contact Form Column --- */
+.contactForm {
+  flex: 1; /* Allows it to take available space */
+  min-width: 300px; /* Minimum width before stacking */
+  background-color: var(--bg-light, #FFFFFF); /* White background for form card */
+  padding: 30px;
+  border-radius: var(--border-radius-large, 8px);
+  box-shadow: var(--shadow-light, 0 0.25rem 0.75rem rgba(0,0,0,0.1));
+}
+
 .formGroup {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Space between form fields */
 }
 
 .formGroup label {
-  display: block;
+  display: block; /* Label on its own line */
   font-size: 1em;
-  color: var(--text-dark);
+  color: var(--text-dark, #333333);
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.required {
+  color: var(--accent-color, #EE8C19); /* Accent color for required asterisk */
+  margin-left: 4px;
 }
 
 .formGroup input[type="text"],
 .formGroup input[type="email"],
+.formGroup input[type="subject"], /* Input type 'subject' is not standard, should be 'text' */
 .formGroup textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
+  border: 1px solid var(--color-light-brown-tan, #C6B7A6); /* Light border */
+  border-radius: var(--border-radius-small, 4px);
   font-size: 1em;
-  font-family: inherit;
-  color: var(--text-dark);
-  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
-  box-sizing: border-box;
+  color: var(--text-dark, #333333);
+  background-color: var(--bg-alternate, #F8F9FA); /* Slight background for input fields */
+  transition: border-color var(--transition-speed-fast, 0.2s), box-shadow var(--transition-speed-fast, 0.2s);
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus {
-  outline: none;
-  border-color: var(--input-focus-border);
-  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+  border-color: var(--primary-color, #214175); /* Primary color on focus */
+  box-shadow: 0 0 0 3px rgba(33, 65, 117, 0.2); /* Subtle focus ring */
+  outline: none; /* Remove default outline */
+  background-color: var(--bg-light, #FFFFFF); /* White background on focus */
 }
 
 .formGroup textarea {
-  resize: vertical;
-  min-height: 120px;
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px; /* Minimum height for textarea */
 }
 
 .submitButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  padding: 15px 30px;
+  display: block;
+  width: 100%; /* Full width button */
+  background-color: var(--accent-color, #EE8C19);
+  color: var(--text-light, #FFFFFF);
+  padding: 15px 25px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius-medium, 25px);
   font-size: 1.1em;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: all var(--transition-speed);
-  box-shadow: var(--box-shadow-light);
-  width: auto;
+  transition: background-color var(--transition-speed-fast, 0.2s), transform var(--transition-speed-fast, 0.2s), box-shadow var(--transition-speed-fast, 0.2s);
+  box-shadow: var(--shadow-medium, 0 0.4rem 0.8rem rgba(0,0,0,0.15));
+  margin-top: 10px; /* Space above button */
 }
 
 .submitButton:hover {
-  background-color: var(--primary-dark-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--accent-dark-color, #D57E15);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong, 0 0.5rem 1.5rem rgba(0,0,0,0.25));
 }
+
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
@@ -212,56 +225,32 @@
     padding: 60px 0;
   }
   .heading {
-    font-size: 2.4em;
-    margin-bottom: 50px;
-  }
-  .contentWrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-  .contactInfo,
-  .contactForm {
-    min-width: unset;
-    width: 90%;
-    max-width: 600px;
-    padding: 30px;
-  }
-  .subHeading {
-    font-size: 1.8em;
-  }
-}
-
-@media (max-width: 600px) {
-  .contactSection {
-    padding: 40px 0;
-  }
-  .heading {
     font-size: 2em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
   .englishText {
     font-size: 0.65em;
   }
+  .contentWrapper {
+    flex-direction: column; /* Stack contact info and form */
+    gap: 30px; /* Adjust gap when stacked */
+  }
   .contactInfo,
   .contactForm {
+    min-width: auto; /* Reset min-width when stacked */
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Constrain width for readability on large tablets */
+    margin: 0 auto; /* Center when stacked */
     padding: 25px;
-    width: 95%;
   }
   .subHeading {
     font-size: 1.6em;
-    margin-bottom: 20px;
   }
   .introText {
-    font-size: 1em;
-    margin-bottom: 25px;
-  }
-  .infoItem {
-    margin-bottom: 15px;
-    gap: 10px;
+    font-size: 0.95em;
   }
   .infoIcon {
-    font-size: 1.5em;
+    font-size: 1.6em;
   }
   .infoItem strong {
     font-size: 1em;
@@ -270,19 +259,111 @@
     font-size: 0.9em;
   }
   .mapContainer {
-    margin-top: 30px;
+    margin-top: 25px;
   }
   .mapHeading {
     font-size: 1.3em;
   }
-  .formGroup label,
+  .submitButton {
+    font-size: 1em;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 50px 0;
+  }
+  .heading {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  .englishText {
+    font-size: 0.6em;
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .contactInfo,
+  .contactForm {
+    padding: 20px;
+    gap: 15px;
+  }
+  .subHeading {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+  .introText {
+    font-size: 0.9em;
+  }
+  .infoIcon {
+    font-size: 1.4em;
+  }
+  .infoItem strong {
+    font-size: 0.95em;
+  }
+  .infoItem p {
+    font-size: 0.85em;
+  }
+  .mapContainer iframe {
+    height: 250px; /* Slightly shorter map on smaller screens */
+  }
+  .formGroup label {
+    font-size: 0.95em;
+  }
   .formGroup input,
   .formGroup textarea {
-    font-size: 0.95em;
     padding: 10px 12px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 40px 0;
+  }
+  .heading {
+    font-size: 1.5em;
+  }
+  .englishText {
+    font-size: 0.55em;
+  }
+  .contactInfo,
+  .contactForm {
+    padding: 15px;
+  }
+  .subHeading {
+    font-size: 1.2em;
+  }
+  .introText {
+    font-size: 0.85em;
+  }
+  .infoItem {
+    gap: 10px;
+  }
+  .infoIcon {
+    font-size: 1.2em;
+  }
+  .infoItem strong {
+    font-size: 0.9em;
+  }
+  .infoItem p {
+    font-size: 0.8em;
+  }
+  .mapContainer iframe {
+    height: 200px; /* Even shorter map on very small screens */
+  }
+  .formGroup label {
+    font-size: 0.9em;
+  }
+  .formGroup input,
+  .formGroup textarea {
+    padding: 8px 10px;
+    font-size: 0.9em;
   }
   .submitButton {
-    padding: 12px 25px;
-    font-size: 1em;
+    padding: 10px 18px;
+    font-size: 0.9em;
   }
 }
