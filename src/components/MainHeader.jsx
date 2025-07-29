@@ -13,7 +13,7 @@ export default function MainHeader() {
             <img src={logo} alt="Devdaha Khanepani Sansthan Logo" className={styles.logoImg} />
           </a>
           <div className={styles.orgDetails}>
-            <h1 className={styles.orgName}>देवदह खानेपानी तथा सरसफाई संस्था</h1>
+            <h1 className={styles.orgName}>देवदह खानेपानी उपभोक्ता तथा सरसफाई संस्था</h1>
             <p className={styles.slogan}>Providing Reliable and Clean Drinking Water</p>
           </div>
         </div>
