@@ -1,0 +1,32 @@
+
+[
+  {
+    "id": 1,
+    "name": "Mr. Guman Singh Kunwar",
+    "designation": "Chairman",
+    "image": "/board_members/guman_singh_kunwar.jpg",
+    "bio": "Mr. Kunwar is a visionary leader with over 20 years of experience in public service and community development. He is dedicated to ensuring equitable water access."
+  },
+  {
+    "id": 2,
+    "name": "Mrs. Anisha Paudel",
+    "designation": "Vice Chairman",
+    "image": "/board_members/anisha_paudel.jpg",
+    "bio": "Mrs. Paudel brings a strong background in environmental sustainability and community engagement. She advocates for modern and eco-friendly water management practices."
+  },
+  {
+    "id": 3,
+    "name": "Mr. Hari Prasad Pandey",
+    "designation": "Secretary",
+    "image": "/board_members/kamal_adhikari.jpg",
+    "bio": "Mr. Pandey, with his meticulous approach, manages the operational aspects and administrative functions, ensuring smooth day-to-day activities of the Sansthan."
+  },
+  {
+    "id": 4,
+    "name": "Ms. Krishna Prasad Gyawali",
+    "designation": "Treasurer",
+    "image": "/board_members/shanti_devi_gurung.jpg",
+    "bio": "Mr. Gyawali oversees the financial health and transparency of the organization, committed to responsible resource allocation and accountability."
+  }
+  
+]

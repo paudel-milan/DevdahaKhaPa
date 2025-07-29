@@ -1,0 +1,256 @@
+/* src/components/styles/BoardMembers.module.css */
+
+.boardMembersSection {
+  padding: 80px 0; /* Consistent vertical padding */
+  background-color: var(--bg-alternate, #F8F9FA); /* Use bg-alternate for contrast (or bg-light if previous was alternate) */
+  color: var(--text-dark, #333333);
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.heading {
+  font-size: 2.5em; /* Consistent with other section headings */
+  color: var(--primary-color, #214175);
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color, #EE8C19);
+  border-radius: 2px;
+}
+
+.englishText {
+  font-size: 0.7em;
+  color: var(--text-muted, #6c757d);
+  font-weight: 500;
+  display: block;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.boardGrid {
+  display: grid;
+  /* Responsive grid:
+     - 4 columns on very large screens (if max-width allows)
+     - 3 columns on large desktop
+     - 2 columns on tablets
+     - 1 column on small mobiles
+  */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min-width for more columns */
+  gap: 30px; /* Space between cards */
+  justify-content: center; /* Center items if they don't fill the row */
+  align-items: stretch; /* Make cards stretch to same height if content varies */
+}
+
+.memberCard {
+  background-color: var(--bg-light, #FFFFFF); /* White background for each card */
+  border-radius: var(--border-radius-large, 8px);
+  box-shadow: var(--shadow-light, 0 0.25rem 0.75rem rgba(0,0,0,0.1));
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed-fast, 0.2s), box-shadow var(--transition-speed-fast, 0.2s);
+}
+
+.memberCard:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: var(--shadow-medium, 0 0.4rem 0.8rem rgba(0,0,0,0.15));
+}
+
+.imageWrapper {
+  width: 120px; /* Fixed size for the circular image container */
+  height: 120px;
+  margin: 0 auto 15px auto; /* Center image and add bottom margin */
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden; /* Ensure image is clipped to circle */
+  border: 4px solid var(--primary-color, #214175); /* Primary color border */
+  display: flex; /* For centering the image if it's smaller */
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-small, 0 2px 5px rgba(0,0,0,0.05)); /* Subtle shadow for image */
+  transition: border-color var(--transition-speed-fast, 0.2s);
+}
+
+.memberCard:hover .imageWrapper {
+    border-color: var(--accent-color, #EE8C19); /* Accent color border on card hover */
+}
+
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the circular area */
+  display: block; /* Remove extra space below image */
+}
+
+.memberDetails {
+  flex-grow: 1; /* Allows details to take remaining vertical space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align details to top */
+}
+
+.memberName {
+  font-size: 1.4em; /* Prominent name */
+  color: var(--primary-dark-color, #19386A);
+  margin-bottom: 5px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.memberDesignation {
+  font-size: 1em;
+  color: var(--accent-color, #EE8C19); /* Accent color for designation */
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.memberBio {
+  font-size: 0.9em;
+  color: var(--text-dark, #333333);
+  line-height: 1.6;
+  margin-bottom: 0;
+  flex-grow: 1; /* Allows bio to push content down if it's short */
+  /* Optional: ellipsis for multi-line bio if you want to limit height */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit bio to 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) { /* Adjust column count for slightly smaller desktops */
+  .boardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Allow 3 columns more easily */
+    gap: 25px;
+  }
+}
+
+@media (max-width: 992px) {
+  .boardMembersSection {
+    padding: 60px 0;
+  }
+  .heading {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  .englishText {
+    font-size: 0.65em;
+  }
+  .boardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ensure 2 columns on tablets */
+    gap: 25px;
+  }
+  .memberCard {
+    padding: 20px;
+  }
+  .imageWrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .memberName {
+    font-size: 1.3em;
+  }
+  .memberDesignation {
+    font-size: 0.95em;
+  }
+  .memberBio {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 768px) {
+  .boardMembersSection {
+    padding: 50px 0;
+  }
+  .heading {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  .englishText {
+    font-size: 0.6em;
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .boardGrid {
+    grid-template-columns: 1fr; /* Stack into a single column on smaller tablets/mobiles */
+    gap: 20px;
+  }
+  .memberCard {
+    padding: 18px;
+    flex-direction: row; /* Layout image and text side-by-side on mobile */
+    text-align: left; /* Align text left when row layout */
+    align-items: center; /* Vertically center in row layout */
+    gap: 20px; /* Space between image and text in row */
+  }
+  .imageWrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0; /* Remove auto margin when in row layout */
+    flex-shrink: 0;
+  }
+  .memberDetails {
+    flex-grow: 1; /* Allow details to take up space */
+  }
+  .memberName {
+    font-size: 1.2em;
+  }
+  .memberDesignation {
+    font-size: 0.9em;
+  }
+  .memberBio {
+    font-size: 0.8em;
+    -webkit-line-clamp: 2; /* Shorter bio on mobile row layout */
+  }
+}
+
+@media (max-width: 480px) {
+  .boardMembersSection {
+    padding: 40px 0;
+  }
+  .heading {
+    font-size: 1.5em;
+  }
+  .englishText {
+    font-size: 0.55em;
+  }
+  .memberCard {
+    padding: 15px;
+    gap: 15px;
+  }
+  .imageWrapper {
+    width: 70px;
+    height: 70px;
+    border-width: 3px; /* Slightly thinner border */
+  }
+  .memberName {
+    font-size: 1.1em;
+  }
+  .memberDesignation {
+    font-size: 0.85em;
+  }
+  .memberBio {
+    font-size: 0.75em;
+    -webkit-line-clamp: 2;
+  }
+}

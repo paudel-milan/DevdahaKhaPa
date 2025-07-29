@@ -1,0 +1,45 @@
+
+[
+  {
+    "id": 1,
+    "title": "New Water Pipeline Installation",
+    "image": "/major_tasks/t1.jpg",
+    "description": "Successfully installed 15km of new distribution pipelines in Ward 7, improving water access for over 500 households."
+  },
+  {
+    "id": 2,
+    "title": "Water Quality Testing Campaign",
+    "image": "/major_tasks/t2.jpg",
+    "description": "Conducted quarterly water quality testing across all distribution points, ensuring compliance with national health standards."
+  },
+  {
+    "id": 3,
+    "title": "Community Awareness Program",
+    "image": "/major_tasks/t3.jpg",
+    "description": "Organized workshops and public gatherings to educate residents on water conservation and sanitation practices."
+  },
+  {
+    "id": 4,
+    "title": "Reservoir Expansion Project",
+    "image": "/major_tasks/t4.jpg",
+    "description": "Completed the expansion of the main water reservoir, increasing storage capacity by 30% to meet growing demand."
+  },
+  {
+    "id": 5,
+    "title": "Smart Meter Pilot Project",
+    "image": "/major_tasks/t1.jpg",
+    "description": "Launched a pilot project for smart water meters in selected areas, enhancing billing accuracy and leak detection."
+  },
+  {
+    "id": 6,
+    "title": "Emergency Water Supply Drill",
+    "image": "/major_tasks/t2.jpg",
+    "description": "Conducted a mock drill for emergency water supply in disaster-prone areas, ensuring preparedness."
+  },
+  {
+    "id": 7,
+    "title": "Pump House Modernization",
+    "image": "/major_tasks/t3.jpg",
+    "description": "Upgraded old pump house machinery with energy-efficient pumps, reducing operational costs."
+  }
+]

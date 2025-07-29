@@ -9,6 +9,8 @@ import NoticeTicker from './components/NoticeTicker'
 import TopInfoBar from './components/TopInfoBar'
 import MainHeader from './components/MainHeader'
 import NavigationBar from './components/NavigationBar'
+import MajorTasks from './components/MajorTasks'
+import BoardMembers from './components/BoardMembers'
 
 
 function App() {
@@ -20,8 +22,9 @@ function App() {
       <NoticeTicker />
         <HeroSection />
         <About />
-        <NoticeList />
-        <DownloadList />
+        <MajorTasks />
+        <BoardMembers />
+
         <Contact />
       <Footer />
     </>
