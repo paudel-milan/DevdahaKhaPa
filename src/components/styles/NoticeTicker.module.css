@@ -1,0 +1,138 @@
+/* Using global variables defined in :root */
+
+.noticeTicker {
+  background-color: var(--primary-dark-color, #19386A); /* Darker primary for background */
+  color: var(--text-light, #FFFFFF); /* White text */
+  padding: 8px 0; /* Thin strip */
+  font-size: 0.9em;
+  overflow: hidden; /* Hide content outside the ticker area */
+  position: relative; /* For z-index or absolute positioning of elements inside */
+  z-index: 990; /* Below main nav but above main content usually */
+  white-space: nowrap; /* Keep content on a single line */
+  box-shadow: var(--shadow-light, 0 2px 4px rgba(0,0,0,0.05)); /* Subtle shadow */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between label and scrolling content */
+}
+
+.tickerLabel {
+  background-color: var(--accent-color, #EE8C19); /* Accent color for the label */
+  color: var(--text-light, #FFFFFF);
+  padding: 4px 10px;
+  border-radius: var(--border-radius-small, 3px); /* Small border radius */
+  font-weight: 700;
+  flex-shrink: 0; /* Prevent label from shrinking */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tickerContentWrapper {
+  flex-grow: 1; /* Allows the content to take available space */
+  overflow: hidden; /* Important: Hides the overflowing content outside the wrapper */
+  position: relative;
+  height: 1.5em; /* Ensure consistent height for scrolling text */
+  display: flex; /* For vertical centering of content */
+  align-items: center;
+}
+
+/* Keyframes for the scrolling animation */
+@keyframes scrollLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); } /* Move to the left by half the combined width */
+}
+
+.tickerContent {
+  display: flex; /* Arrange ticker items in a row */
+  /* This element will be animated to scroll */
+  animation: scrollLeft 30s linear infinite; /* Adjust duration based on content length */
+  animation-play-state: running; /* Default state */
+  will-change: transform; /* Hint to browser for performance */
+}
+
+/* Pause animation on hover */
+.noticeTicker:hover .tickerContent {
+  animation-play-state: paused;
+}
+
+.tickerItem {
+  display: inline-block; /* Treat each notice as an inline block for spacing */
+  text-decoration: none;
+  color: var(--text-light, #FFFFFF);
+  padding: 0 5px; /* Adjust spacing between text and separator */
+  white-space: nowrap; /* Ensure individual items don't wrap */
+  transition: color var(--transition-speed-fast, 0.2s);
+}
+
+.tickerItem:hover {
+  color: var(--accent-color, #EE8C19); /* Accent color on hover for readability */
+}
+
+.separator {
+  margin: 0 10px; /* Space around the separator */
+  color: rgba(255, 255, 255, 0.7); /* Slightly muted separator color */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .noticeTicker {
+    font-size: 0.8em; /* Smaller font size on mobile */
+    padding: 6px 0;
+  }
+  .container {
+    padding: 0 15px; /* Reduced horizontal padding */
+    gap: 10px;
+  }
+  .tickerLabel {
+    padding: 3px 8px;
+  }
+  .tickerContent {
+    animation-duration: 20s; /* Faster scroll on smaller screens */
+  }
+  .separator {
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .noticeTicker {
+    font-size: 0.75em;
+    padding: 5px 0;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .tickerLabel {
+    /* Optionally hide label to save space on very small screens */
+    /* display: none; */
+  }
+  .tickerContent {
+    animation-duration: 15s; /* Even faster scroll for tiny screens */
+  }
+}
+
+/* Fallback for browsers that don't support CSS animations or for a static display */
+@media (prefers-reduced-motion: reduce) {
+  .tickerContent {
+    animation: none; /* Disable animation for users who prefer reduced motion */
+    white-space: normal; /* Allow text to wrap if animation is off */
+    display: block; /* Stack items */
+    text-align: center; /* Center them */
+  }
+  .tickerItem {
+    display: block; /* Each item on its own line */
+    padding: 2px 0; /* Adjust padding */
+  }
+  .separator {
+    display: none; /* Hide separators if stacking */
+  }
+  .noticeTicker {
+    height: auto; /* Allow height to adjust for stacked content */
+  }
+}

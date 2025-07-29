@@ -1,0 +1,348 @@
+/* Using global variables defined in :root */
+
+.navigationBar {
+  width: 100%;
+  background-color: var(--primary-color, #0056b3); /* Fallback primary color */
+  padding: 12px 30px;
+  box-shadow: var(--shadow-strong, 0 8px 16px rgba(0,0,0,0.2)); /* Fallback shadow */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background-color var(--transition-speed-normal, 0.3s);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Added flex-wrap for better responsiveness, allowing items to stack if needed */
+  flex-wrap: wrap;
+}
+
+.hamburger {
+  display: none; /* Hidden on desktop */
+  /* Added styles for the hamburger button when it appears on mobile */
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: var(--text-light, #ffffff); /* Color from your design */
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1020; /* Ensure it's above the sliding menu */
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
+  justify-content: space-between;
+  /* Added min-width for flex items in case of wrapping */
+  min-width: 0;
+}
+
+.navLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  /* Added flex-wrap for nav links, so they can wrap if space is tight before hamburger appears */
+  flex-wrap: wrap;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-light, #ffffff);
+  font-size: 1em;
+  font-weight: 600;
+  padding: 8px 0;
+  position: relative;
+  /* Use 'all' only if necessary, 'color' is usually sufficient for text */
+  transition: color var(--transition-speed-fast, 0.15s); /* Transition only color for efficiency */
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Keep links on a single line */
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color, #ffaa00); /* Fallback accent color */
+  transition: width var(--transition-speed-fast, 0.15s) ease-out; /* Added ease-out for smoother effect */
+}
+
+.navLink:hover {
+  color: var(--accent-color, #ffaa00);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.ctaButton {
+  background-color: var(--accent-color, #ffaa00);
+  color: var(--text-light, #ffffff);
+  padding: 10px 24px;
+  border-radius: 5px;
+  font-weight: 700;
+  box-shadow: var(--shadow-strong, 0 8px 16px rgba(0,0,0,0.2));
+  /* Use specific properties for transition */
+  transition: background-color var(--transition-speed-fast, 0.15s), transform var(--transition-speed-fast, 0.15s), box-shadow var(--transition-speed-fast, 0.15s);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.ctaButton:hover {
+  background-color: var(--accent-dark-color, #e69500); /* Fallback accent dark color */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium, 0 4px 8px rgba(0,0,0,0.15)); /* Changed to medium shadow for consistency/preference */
+}
+
+.dropdown {
+  position: relative;
+  /* Added for desktop dropdown hover */
+  /* Important: For desktop, `display: block` or `inline-block` on the dropdown itself to allow `:hover` */
+}
+
+.dropdownArrow {
+  font-size: 0.55em;
+  margin-left: 6px;
+  transform: rotate(0deg);
+  transition: transform var(--transition-speed-fast, 0.15s);
+  color: var(--text-light, #ffffff);
+}
+
+.dropdown:hover .dropdownArrow {
+  transform: rotate(180deg);
+  color: var(--accent-color, #ffaa00);
+}
+
+.dropdownMenu {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: var(--bg-light, #f8f9fa); /* Fallback light background */
+  box-shadow: var(--shadow-strong, 0 8px 16px rgba(0,0,0,0.2));
+  min-width: 180px;
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  /* Use specific properties for transition */
+  transition: opacity var(--transition-speed-normal, 0.3s), transform var(--transition-speed-normal, 0.3s), visibility var(--transition-speed-normal, 0.3s);
+  z-index: 100;
+  border-top: 4px solid var(--primary-color, #0056b3);
+}
+
+.dropdown:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--text-dark, #333333);
+  font-size: 0.95em;
+  white-space: nowrap;
+  transition: background-color var(--transition-speed-fast, 0.15s), color var(--transition-speed-fast, 0.15s);
+  font-weight: 500;
+}
+
+.dropdownItem:hover {
+  background-color: var(--bg-alternate, #e9ecef); /* Fallback alternate background */
+  color: var(--primary-color, #0056b3);
+}
+
+
+/* --- Mobile Menu (Adjusted Breakpoint & Logic) --- */
+/* Changed breakpoint from 768px to 992px to align with common desktop/tablet transition and previous JS */
+@media (max-width: 992px) {
+  .navigationBar {
+    padding: 8px 20px;
+    /* Added display flex to navigationBar so hamburger can be on the left */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .container {
+    padding: 0; /* Remove container padding as navBar padding handles it */
+    width: 100%; /* Ensure container takes full width of navBar */
+    justify-content: flex-start; /* Hamburger will be on the left */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger */
+    order: -1; /* Place it first in the flex order */
+    margin-right: auto; /* Pushes other content to the right */
+    position: relative; /* Necessary if you want it to align with nav bar directly */
+    z-index: 1020; /* Ensure it stays on top */
+  }
+
+  .navContent {
+    position: fixed;
+    top: 0; /* Align to the top of the viewport */
+    right: -100%; /* Start off-screen to the right */
+    width: 75%; /* Mobile menu width */
+    max-width: 320px; /* Adjusted max-width for mobile menu */
+    height: 100vh; /* Full viewport height */
+    background-color: var(--primary-color, #0056b3); /* Primary color background for mobile menu */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.4); /* Stronger shadow for slide-in effect */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-start; /* Align items to the top */
+    padding: 70px 0 15px; /* Top padding for clear space, plus bottom padding */
+    transition: right 0.3s ease-out; /* Smooth slide-in animation */
+    z-index: 1015; /* Above page content but below hamburger icon */
+    overflow-y: auto; /* Enable scrolling for long menus */
+    align-items: flex-start; /* Align menu items to the left within the panel */
+  }
+
+  .navContent.open {
+    right: 0; /* Slide in when 'open' class is applied */
+  }
+
+  .navLinks {
+    flex-direction: column; /* Stack links vertically */
+    gap: 0; /* Remove gap between li items, let padding on navLink handle spacing */
+    width: 100%; /* Full width for links */
+    align-items: flex-start; /* Align text to the left */
+    margin-top: 15px;
+  }
+
+  .navLinks li {
+    width: 100%; /* Ensure list items take full width */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navLinks li:last-child {
+    border-bottom: none; /* No border on the last item */
+  }
+
+  .navLink {
+    padding: 15px 20px; /* Larger clickable area */
+    font-size: 1.1em;
+    width: 100%; /* Ensure link takes full width of list item */
+    text-align: left; /* Align text left */
+  }
+
+  .navLink::after {
+    left: 20px; /* Start underline from the same indent as text */
+    width: calc(100% - 40px); /* Ensure underline spans the visible width of the text area */
+  }
+  .navLink:hover::after {
+    width: calc(100% - 40px); /* Maintain full width on hover */
+  }
+
+  /* Mobile Dropdown Styling (Accordion effect) */
+  .dropdownMenu {
+    position: static; /* Remove absolute positioning */
+    box-shadow: none; /* No shadow for nested menu */
+    background-color: rgba(0,0,0,0.1); /* Slightly darker background for nested items (translucent over primary) */
+    padding: 0; /* Controlled by max-height */
+    margin-top: 0; /* No margin from parent link */
+    opacity: 1; /* Always visible when active */
+    visibility: visible; /* Always visible when active */
+    transform: translateY(0); /* No transform */
+    max-height: 0; /* Initially hidden, controlled by JS class */
+    overflow: hidden; /* Hide overflow for smooth slide */
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition */
+    border-top: none; /* No accent border for nested dropdown */
+    border-radius: 0; /* No border-radius for nested menu */
+  }
+
+  .dropdownActiveMobile .dropdownMenu {
+    max-height: 200px; /* Sufficient height for menu items */
+    padding: 8px 0; /* Apply padding when open */
+  }
+
+  .dropdownItem {
+    padding: 10px 40px; /* Increased indent for nested items */
+    font-size: 1em;
+    color: var(--text-light, #ffffff); /* Inherit light text color */
+  }
+  .dropdownItem:hover {
+    background-color: rgba(0,0,0,0.2); /* Darker background on hover for nested items */
+    color: var(--accent-color, #ffaa00);
+  }
+
+  /* Rotate arrow for mobile dropdown when active */
+  .dropdownArrow {
+    transition: transform var(--transition-speed-fast, 0.15s);
+  }
+  .dropdownActiveMobile .dropdownArrow {
+    transform: rotate(180deg);
+  }
+  .dropdown:hover .dropdownArrow { /* Reset desktop hover for mobile */
+    transform: none;
+    color: var(--text-light); /* Reset color as well */
+  }
+
+  /* Call to Action Button in Mobile Menu */
+  .ctaButton {
+    width: calc(100% - 40px); /* Adjusted width: full width minus horizontal padding */
+    margin: 25px auto; /* Center horizontally */
+    padding: 12px 20px;
+    font-size: 1.1em; /* Increased font size for better mobile readability */
+    text-align: center;
+    box-shadow: var(--shadow-small, 0 2px 5px rgba(0,0,0,0.1)); /* Lighter shadow for mobile button */
+  }
+  .ctaButton:hover {
+    transform: none; /* Remove lift effect on mobile for touch */
+    box-shadow: var(--shadow-small, 0 2px 5px rgba(0,0,0,0.1)); /* Keep consistent shadow on hover */
+  }
+}
+
+@media (max-width: 480px) {
+  .navigationBar {
+    padding: 6px 15px;
+  }
+  .hamburger {
+    font-size: 1.6em;
+  }
+  .navContent {
+    width: 85%; /* Slightly wider menu for tiny screens */
+    max-width: 280px; /* Smaller max width for very small screens */
+    padding: 60px 0 10px;
+  }
+  .navLink {
+    font-size: 1em;
+    padding: 12px 18px;
+  }
+  .navLink::after {
+    left: 18px;
+    width: calc(100% - 36px);
+  }
+  .navLink:hover::after {
+    width: calc(100% - 36px);
+  }
+  .ctaButton {
+    padding: 10px 18px;
+    font-size: 1em;
+  }
+  .dropdownItem {
+    font-size: 0.9em;
+    padding: 8px 30px; /* Maintain good indent */
+  }
+  .dropdownActiveMobile .dropdownMenu {
+    max-height: 150px; /* Adjust for very small screens */
+  }
+}

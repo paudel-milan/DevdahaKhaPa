@@ -1,22 +1,28 @@
-import Navbar from './components/Navbar'
+
 import HeroSection from './components/HeroSection'
 import About from './components/About'
 import NoticeList from './components/NoticeList'
 import DownloadList from './components/DownloadList'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import NoticeTicker from './components/NoticeTicker'  
+import TopInfoBar from './components/TopInfoBar'
+import MainHeader from './components/MainHeader'
+import NavigationBar from './components/NavigationBar'
+
 
 function App() {
   return (
     <>
-      <Navbar />
-      <main style={{ maxWidth: '1100px', margin: '0 auto', backgroundColor: '#fff' }}>
+      <TopInfoBar /> 
+      <MainHeader/>
+      <NavigationBar />
+      <NoticeTicker />
         <HeroSection />
         <About />
         <NoticeList />
         <DownloadList />
         <Contact />
-      </main>
       <Footer />
     </>
   )

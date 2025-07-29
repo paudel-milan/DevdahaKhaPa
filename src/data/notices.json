@@ -1,12 +1,35 @@
+
 [
   {
-    "title": "जुलाइ महिनाको पानी आपूर्ति सूचना",
-    "date": "२०८१-०४-१५",
-    "file": "/assets/notices/july-update.pdf"
+    "id": 1,
+    "title": "Public Notice Regarding Water Supply Interruption in Ward No. 5",
+    "date": "2081/04/10 (July 25, 2024)",
+    "excerpt": "This notice informs residents of Ward No. 5 about a scheduled water supply interruption for maintenance work...",
+    "file": "/notices/notice-ward5-interruption.pdf",
+    "type": "PDF"
   },
   {
-    "title": "मर्मत कार्यको तालिका",
-    "date": "२०८१-०४-०५",
-    "file": "/assets/notices/maintenance.pdf"
+    "id": 2,
+    "title": "New Water Bill Payment Procedure Announced",
+    "date": "2081/04/05 (July 20, 2024)",
+    "excerpt": "Details about the new online and offline water bill payment methods are now available...",
+    "file": "/notices/notice-bill-payment.pdf",
+    "type": "PDF"
+  },
+  {
+    "id": 3,
+    "title": "Vacancy Announcement for Technical Assistant",
+    "date": "2081/03/30 (July 15, 2024)",
+    "excerpt": "Devdaha Khanepani Sansthan is looking for a qualified Technical Assistant. Interested candidates are requested to apply...",
+    "file": "/notices/notice-vacancy-tech-assistant.pdf",
+    "type": "PDF"
+  },
+  {
+    "id": 4,
+    "title": "Emergency Water Outage Due to Pipe Burst in Buddha Chowk",
+    "date": "2081/03/28 (July 13, 2024)",
+    "excerpt": "An unforeseen pipe burst has caused an emergency water outage in the Buddha Chowk area. Our teams are on site for repairs...",
+    "file": "/notices/notice-buddha-chowk-emergency.pdf",
+    "type": "PDF"
   }
 ]

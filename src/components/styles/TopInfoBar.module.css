@@ -1,0 +1,121 @@
+/* Using global variables defined in :root */
+
+.topInfoBar {
+  background-color: var(--color-dark-blue-teal, #004d70); /* Fallback dark blue-teal */
+  color: var(--text-light, #ffffff); /* Fallback light text color */
+  padding: 6px 0; /* Reduced padding as per original */
+  font-size: 0.85em; /* Slightly smaller font as per original */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1002; /* Keep z-index if relevant to other layout elements */
+  position: relative; /* Keep position if relevant */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Reduced horizontal padding as per original */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+.leftContent {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced gap as per original */
+  /* Ensures left content takes available space but doesn't push social icons too far */
+  flex-grow: 1;
+  flex-basis: auto; /* Allow content to size naturally */
+}
+
+.locationText {
+  white-space: nowrap; /* Prevents text from wrapping */
+  line-height: 1; /* Ensures text aligns well with icon */
+}
+
+
+.rightContent {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Slightly increased gap for social icons for better touch target, but adjust if you want it tighter */
+  flex-shrink: 0; /* Prevents social icons from shrinking */
+}
+
+.icon {
+  font-size: 0.9em; /* Slightly smaller icon as per original */
+  color: var(--text-light, #ffffff); /* Icons use light text color */
+  vertical-align: middle; /* Ensures icons align properly with text */
+}
+
+.socialLink {
+  color: var(--text-light, #ffffff); /* Social link icons use light text color */
+  /* Removed specific font-size here as the .icon class handles it. */
+  /* Added specific width/height for touch target consistency */
+  width: 30px; /* Default size, will be adjusted by media queries */
+  height: 30px; /* Default size */
+  display: flex; /* To center the icon inside the link */
+  justify-content: center; /* To center the icon inside the link */
+  align-items: center; /* To center the icon inside the link */
+  border-radius: 50%; /* Optional: for a subtle circle background, remove if not desired */
+  transition: background-color var(--transition-speed-fast, 0.2s), color var(--transition-speed-fast, 0.2s);
+}
+
+.socialLink:hover {
+  color: var(--color-dark-blue-teal, #004d70); /* Text color changes on hover */
+  background-color: var(--text-light, #ffffff); /* Background color appears on hover */
+  /* Or if you prefer only color change: */
+  /* color: var(--accent-color, #ffcc00); */ /* Accent color on hover */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .topInfoBar {
+    padding: 5px 0;
+    font-size: 0.8em;
+  }
+  .leftContent, .rightContent {
+    gap: 6px;
+  }
+  .socialLink {
+    width: 26px; /* Reduced size as per original */
+    height: 26px;
+    font-size: 0.9em; /* Adjust icon size within link */
+  }
+}
+
+@media (max-width: 768px) {
+  .topInfoBar {
+    padding: 8px 0; /* Adjusted for stacking */
+  }
+  .container {
+    flex-direction: column;
+    gap: 4px; /* Reduced gap between stacked items */
+    padding: 0 10px;
+  }
+  /* Ensure content is centered when stacked */
+  .leftContent,
+  .rightContent {
+    justify-content: center;
+    width: 100%; /* Take full width */
+    margin-top: 2px; /* Small separation */
+    margin-bottom: 2px; /* Small separation */
+  }
+  /* Removed .welcomeText and .socialIcons as they don't seem to be in the current JSX structure */
+}
+
+@media (max-width: 480px) {
+  .topInfoBar {
+    font-size: 0.75em;
+    padding: 6px 0;
+  }
+  .icon {
+    font-size: 0.8em;
+  }
+  .socialLink {
+    width: 24px;
+    height: 24px;
+    font-size: 0.85em; /* Adjust icon size within link */
+  }
+}

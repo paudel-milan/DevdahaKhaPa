@@ -1,11 +1,35 @@
+:root {
+  /* Core Palette from image_f0babb.png */
+  --color-dark-blue-teal: #213B4C;
+  --color-mid-blue-teal: #4D768E;
+  --color-light-brown-tan: #C6B7A6;
+  --color-very-light-peach: #F0ECE5;
 
+  /* Key Colors sampled from Lekhnath Khanepani */
+  --primary-color: #214175; /* Strong Blue for main elements */
+  --primary-dark-color: #19386A; /* Darker Primary for hover */
+  --accent-color: #EE8C19; /* Vibrant Orange for CTAs, highlights */
+  --accent-dark-color: #D57E15; /* Darker Accent for hover */
 
-* {
+  /* Neutrals */
+  --bg-light: #FFFFFF; /* Pure white for alternating sections */
+  --bg-alternate: #F8F9FA; /* Off-white / very light grey for alternating sections */
+  --text-dark: #333333; /* Standard dark text */
+  --text-light: #FFFFFF; /* White text for dark backgrounds */
+  --text-muted: #6c757d; /* Lighter grey for secondary text */
+
+  /* Shadows & Transitions */
+  --shadow-strong: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  --shadow-light: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  --transition-speed-fast: 0.2s ease-in-out;
+  --transition-speed-normal: 0.3s ease-in-out;
+}
+
+body {
+  font-family: 'Arial', sans-serif; /* Still a good default, or 'Noto Sans Nepali' if used */
+  color: var(--text-dark);
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f4f4f4;
+  background-color: var(--bg-alternate); /* Default body background */
 }

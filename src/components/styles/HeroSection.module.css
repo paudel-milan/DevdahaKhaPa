@@ -1,29 +1,325 @@
-.hero {
-  background-color: #e3f2fd;
-  padding: 4rem 1rem;
+/* Using global variables defined in :root */
+
+.heroSection {
+  width: 100%;
+  background-color: var(--bg-alternate, #F8F9FA); /* Default background for the section */
+  padding: 30px 0; /* Top and bottom padding for the entire section */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.heroContentWrapper {
+  max-width: 1200px; /* Constrain content width */
+  margin: 0 auto; /* Center the content */
+  padding: 0 20px; /* Horizontal padding for container content */
+  display: flex;
+  gap: 30px; /* Space between carousel and personnel sections */
+  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+  align-items: flex-start; /* Align items to the top */
+}
+
+/* --- Carousel Container (Left Column ~70%) --- */
+.carouselContainer {
+  flex: 3; /* Equivalent to 70% in a 70:30 split, approx 3 / (3+1) = 0.75 */
+  min-width: 0; /* Important for flex items within flex-wrap */
+  position: relative;
+  border-radius: var(--border-radius-large, 8px); /* Rounded corners */
+  overflow: hidden; /* Ensures images are clipped to border-radius */
+  box-shadow: var(--shadow-strong, 0 8px 16px rgba(0,0,0,0.25)); /* Stronger shadow */
+  aspect-ratio: 16 / 9; /* Maintain aspect ratio for the carousel */
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  position: absolute; /* Stack images on top of each other */
+  top: 0;
+  left: 0;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+.carouselImage.active {
+  opacity: 1; /* Active image is visible */
+}
+
+/* Carousel Navigation Arrows */
+.carouselNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  color: var(--text-light, #FFFFFF);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2; /* Above images, below dots */
+  font-size: 1.5em;
+  border-radius: var(--border-radius-small, 4px);
+  transition: background-color var(--transition-speed-fast, 0.2s);
+}
+.carouselNavButton.prev {
+  left: 15px;
+}
+.carouselNavButton.next {
+  right: 15px;
+}
+.carouselNavButton:hover {
+  background-color: var(--accent-color, #EE8C19); /* Accent color on hover */
+}
+
+
+/* Carousel Dots */
+.carouselDots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2; /* Above images */
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color var(--transition-speed-fast, 0.2s), transform var(--transition-speed-fast, 0.2s);
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for contrast */
+}
+
+.dot.active {
+  background-color: var(--primary-color, #214175); /* Primary color for active dot */
+  transform: scale(1.2); /* Slightly larger active dot */
+  border-color: var(--primary-dark-color, #19386A);
+}
+
+.dot:hover {
+  background-color: var(--primary-color, #214175);
+}
+
+
+/* --- Personnel Container (Right Column ~30%) --- */
+.personnelContainer {
+  flex: 1; /* Equivalent to 30% in a 70:30 split */
+  min-width: 280px; /* Minimum width before stacking */
+  background-color: var(--bg-light, #FFFFFF); /* White background */
+  padding: 25px;
+  border-radius: var(--border-radius-large, 8px);
+  box-shadow: var(--shadow-light, 0 0.25rem 0.75rem rgba(0,0,0,0.1)); /* Lighter shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between heading and cards */
+}
+
+.personnelHeading {
+  font-size: 1.6em;
+  color: var(--primary-color, #214175);
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-light-brown-tan, #C6B7A6); /* Underline effect */
   text-align: center;
 }
-.container {
-  max-width: 900px;
-  margin: 0 auto;
+
+.personnelList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between individual personnel cards */
 }
-.logo {
-  width: 100px;
-  margin-bottom: 1rem;
+
+.personnelCard {
+  display: flex;
+  align-items: flex-start; /* Align image and text at the top */
+  gap: 15px;
+  padding: 15px;
+  background-color: var(--bg-alternate, #F8F9FA); /* Off-white background for cards */
+  border-radius: var(--border-radius-medium, 6px);
+  box-shadow: var(--shadow-small, 0 2px 5px rgba(0,0,0,0.05)); /* Very light shadow for cards */
+  transition: transform var(--transition-speed-fast, 0.2s), box-shadow var(--transition-speed-fast, 0.2s);
 }
-.title {
-  font-size: 2.5rem;
-  color: #0d47a1;
+.personnelCard:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: var(--shadow-medium, 0 4px 8px rgba(0,0,0,0.1)); /* Stronger shadow on hover */
 }
-.subtitle {
-  font-size: 1.2rem;
-  color: #37474f;
+
+.personnelImage {
+  width: 80px; /* Fixed width for personnel image */
+  height: 80px; /* Fixed height */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover;
+  flex-shrink: 0; /* Prevent image from shrinking */
+  border: 2px solid var(--primary-color, #214175); /* Border around image */
 }
-@media (max-width: 768px) {
-  .title {
-    font-size: 1.8rem;
+
+.personnelDetails {
+  flex-grow: 1; /* Allows details to take remaining space */
+}
+
+.personnelName {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--text-dark, #333333);
+  margin: 0 0 3px 0;
+  line-height: 1.2;
+}
+
+.personnelDesignation {
+  font-size: 0.9em;
+  color: var(--text-muted, #6c757d);
+  margin: 0 0 5px 0;
+}
+
+.personnelPhone {
+  font-size: 0.9em;
+  color: var(--text-dark, #333333);
+  margin: 0 0 10px 0;
+}
+
+.personnelPhone a {
+  color: inherit; /* Inherit color from parent */
+  text-decoration: none;
+}
+.personnelPhone a:hover {
+  color: var(--primary-color, #214175); /* Hover color for phone number link */
+  text-decoration: underline;
+}
+
+.viewProfileButton {
+  display: inline-flex; /* Use flex for icon alignment */
+  align-items: center;
+  gap: 5px;
+  background-color: var(--primary-color, #214175);
+  color: var(--text-light, #FFFFFF);
+  padding: 8px 15px;
+  border-radius: var(--border-radius-small, 4px);
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: background-color var(--transition-speed-fast, 0.2s), transform var(--transition-speed-fast, 0.2s);
+}
+
+.viewProfileButton:hover {
+  background-color: var(--accent-color, #EE8C19); /* Accent color on hover */
+  transform: translateY(-1px); /* Slight lift */
+}
+
+.profileIcon {
+  font-size: 0.7em; /* Smaller icon size */
+}
+
+
+/* --- Responsive Adjustments --- */
+/* Stacks columns below 992px (typical tablet breakpoint) */
+@media (max-width: 992px) {
+  .heroContentWrapper {
+    flex-direction: column; /* Stack carousel and personnel vertically */
+    gap: 30px; /* Space between stacked sections */
+    padding: 0 25px; /* Adjust padding for tablets */
   }
-  .subtitle {
-    font-size: 1rem;
+
+  .carouselContainer {
+    flex: none; /* Remove flex sizing */
+    width: 100%; /* Take full width */
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+  }
+
+  .personnelContainer {
+    flex: none; /* Remove flex sizing */
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Constrain width even when stacked for better readability */
+    margin: 0 auto; /* Center personnel container when stacked */
+    padding: 20px;
+  }
+
+  .personnelHeading {
+    font-size: 1.5em;
+  }
+
+  .personnelCard {
+    flex-direction: column; /* Stack image and details within card */
+    align-items: center; /* Center content when stacked */
+    text-align: center;
+    padding: 20px;
+  }
+  .personnelImage {
+    margin-bottom: 10px; /* Space below image when stacked */
+  }
+}
+
+/* Further adjustments for smaller tablets and larger mobiles */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 25px 0;
+  }
+  .heroContentWrapper {
+    gap: 25px;
+    padding: 0 20px;
+  }
+  .personnelContainer {
+    padding: 18px;
+    gap: 15px;
+  }
+  .personnelHeading {
+    font-size: 1.4em;
+  }
+  .personnelCard {
+    gap: 10px;
+    padding: 15px;
+  }
+  .personnelImage {
+    width: 70px;
+    height: 70px;
+  }
+  .personnelName {
+    font-size: 1.1em;
+  }
+  .personnelDesignation,
+  .personnelPhone {
+    font-size: 0.85em;
+  }
+  .viewProfileButton {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+}
+
+/* Adjustments for smaller mobile devices */
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 20px 0;
+  }
+  .heroContentWrapper {
+    gap: 20px;
+    padding: 0 15px;
+  }
+  .carouselNavButton {
+    font-size: 1.2em;
+    padding: 8px 12px;
+    left: 10px;
+    right: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    gap: 8px;
+  }
+  .personnelContainer {
+    padding: 15px;
+    gap: 12px;
+  }
+  .personnelHeading {
+    font-size: 1.3em;
+  }
+  .personnelCard {
+    padding: 12px;
+  }
+  .personnelImage {
+    width: 60px;
+    height: 60px;
+  }
+  .personnelName {
+    font-size: 1em;
   }
 }

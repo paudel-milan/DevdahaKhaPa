@@ -1,11 +1,273 @@
-.about {
-  padding: 2rem 1rem;
-  background-color: #ffffff;
-  max-width: 900px;
-  margin: 0 auto;
+/* Using global variables defined in :root */
+
+.aboutSection {
+  padding: 80px 0; /* Generous vertical padding for section separation */
+  background-color: var(--bg-light, #FFFFFF); /* Light background for this section */
+  color: var(--text-dark, #333333);
+  overflow: hidden; /* Clear any floats/margins */
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Horizontal padding */
+}
+
 .heading {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: #0d47a1;
+  font-size: 2.5em; /* Prominent heading size */
+  color: var(--primary-color, #214175);
+  text-align: center;
+  margin-bottom: 50px; /* Space below heading */
+  position: relative;
+  padding-bottom: 15px; /* Space for underline */
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px; /* Short, prominent underline */
+  height: 4px;
+  background-color: var(--accent-color, #EE8C19); /* Accent colored underline */
+  border-radius: 2px;
+}
+
+.englishText {
+  font-size: 0.7em; /* Smaller English text */
+  color: var(--text-muted, #6c757d);
+  font-weight: 500;
+  display: block; /* Ensures it's on a new line below Nepali */
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center; /* Vertically align content */
+  gap: 50px; /* Space between text and image columns */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.textColumn {
+  flex: 1; /* Allows text to grow */
+  min-width: 300px; /* Minimum width before wrapping */
+  line-height: 1.8; /* Improved readability for paragraphs */
+}
+
+.introParagraph {
+  font-size: 1.1em; /* Slightly larger for introduction */
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: var(--text-dark, #333333);
+}
+
+.detailParagraph {
+  font-size: 1em;
+  margin-bottom: 25px;
+  color: var(--text-dark, #333333);
+}
+
+.learnMoreButton {
+  display: inline-block;
+  background-color: var(--primary-color, #214175);
+  color: var(--text-light, #FFFFFF);
+  padding: 12px 25px;
+  border-radius: var(--border-radius-medium, 25px); /* Rounded button */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color var(--transition-speed-fast, 0.2s), transform var(--transition-speed-fast, 0.2s);
+  box-shadow: var(--shadow-small, 0 2px 5px rgba(0,0,0,0.1));
+}
+
+.learnMoreButton:hover {
+  background-color: var(--accent-color, #EE8C19);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium, 0 4px 8px rgba(0,0,0,0.15));
+}
+
+.imageColumn {
+  flex: 1; /* Allows image to grow */
+  min-width: 300px; /* Minimum width before wrapping */
+  display: flex;
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+  position: relative; /* For potential overlays or effects */
+}
+
+.aboutImage {
+  max-width: 100%; /* Ensure image fits column */
+  height: auto;
+  border-radius: var(--border-radius-large, 8px);
+  box-shadow: var(--shadow-strong, 0 8px 16px rgba(0,0,0,0.25)); /* Strong shadow for image */
+  display: block; /* Remove extra space below image */
+  transition: transform var(--transition-speed-normal, 0.3s);
+}
+.aboutImage:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+/* --- Optional Mission/Vision/Values Section Styling --- */
+.missionVision {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 80px; /* Space above this section */
+  flex-wrap: wrap; /* Allow cards to wrap */
+}
+
+.missionVision .card {
+  background-color: var(--bg-alternate, #F8F9FA); /* Off-white card background */
+  padding: 30px;
+  border-radius: var(--border-radius-medium, 6px);
+  box-shadow: var(--shadow-light, 0 0.25rem 0.75rem rgba(0,0,0,0.1));
+  flex: 1;
+  min-width: 280px; /* Minimum width for cards */
+  max-width: 380px; /* Max width for cards */
+  text-align: center;
+  transition: transform var(--transition-speed-fast, 0.2s), box-shadow var(--transition-speed-fast, 0.2s);
+}
+
+.missionVision .card:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: var(--shadow-medium, 0 4px 8px rgba(0,0,0,0.15));
+}
+
+.missionVision .card h3 {
+  color: var(--primary-color, #214175);
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.missionVision .card p,
+.missionVision .card ul {
+  font-size: 0.95em;
+  color: var(--text-dark, #333333);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.missionVision .card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.missionVision .card ul li {
+  margin-bottom: 5px;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .aboutSection {
+    padding: 60px 0;
+  }
+  .heading {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  .englishText {
+    font-size: 0.65em;
+  }
+  .contentWrapper {
+    flex-direction: column; /* Stack columns */
+    gap: 40px;
+  }
+  .textColumn,
+  .imageColumn {
+    min-width: auto; /* Reset min-width when stacked */
+    width: 100%; /* Take full width */
+  }
+  .aboutImage {
+    max-width: 80%; /* Constrain image width slightly when stacked */
+  }
+
+  .missionVision {
+    margin-top: 60px;
+    gap: 20px;
+    padding: 0 20px; /* Add horizontal padding for cards when wrapped */
+  }
+  .missionVision .card {
+    min-width: auto; /* Allow cards to resize */
+    max-width: none; /* Remove max-width */
+    width: 100%; /* Take full width when stacked, or adjust as needed */
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutSection {
+    padding: 50px 0;
+  }
+  .heading {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+  .englishText {
+    font-size: 0.6em;
+  }
+  .contentWrapper {
+    gap: 30px;
+  }
+  .introParagraph {
+    font-size: 1em;
+  }
+  .detailParagraph {
+    font-size: 0.95em;
+  }
+  .learnMoreButton {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+  .aboutImage {
+    max-width: 90%; /* Allow image to be slightly larger */
+  }
+  .missionVision {
+    margin-top: 50px;
+  }
+  .missionVision .card {
+    padding: 25px;
+  }
+  .missionVision .card h3 {
+    font-size: 1.3em;
+  }
+  .missionVision .card p,
+  .missionVision .card ul {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutSection {
+    padding: 40px 0;
+  }
+  .heading {
+    font-size: 1.5em;
+  }
+  .englishText {
+    font-size: 0.55em;
+  }
+  .container {
+    padding: 0 15px;
+  }
+  .introParagraph,
+  .detailParagraph {
+    font-size: 0.9em;
+  }
+  .learnMoreButton {
+    padding: 8px 18px;
+    font-size: 0.85em;
+  }
+  .aboutImage {
+    max-width: 95%;
+  }
+  .missionVision .card {
+    padding: 20px;
+  }
 }

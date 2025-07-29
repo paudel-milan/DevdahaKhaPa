@@ -1,0 +1,185 @@
+.mainHeader {
+  background-color: var(--color-very-light-peach);
+  padding: 20px 0; /* Reduced padding */
+  border-bottom: 2px solid var(--color-light-brown-tan);
+  box-shadow: var(--shadow-light);
+  z-index: 1000;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Reduced horizontal padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px; /* Reduced gap */
+}
+
+.brandInfo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 15px; /* Reduced gap */
+}
+
+.logoLink {
+  display: block;
+  line-height: 0;
+}
+
+.logoImg {
+  height: 80px; /* Slightly reduced logo height */
+  width: auto;
+}
+
+.orgDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.orgName {
+  font-size: 1.7em; /* Reduced font size */
+  font-weight: 800;
+  color: var(--primary-color);
+  margin: 0 0 4px 0; /* Reduced margin */
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: -0.5px;
+}
+
+.slogan {
+  font-size: 1em; /* Reduced font size */
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.contactDetails {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Reduced gap */
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduced gap */
+}
+
+.contactIcon {
+  font-size: 1.6em; /* Reduced icon size */
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.contactLabel {
+  font-size: 0.85em; /* Reduced font size */
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.contactValue {
+  font-size: 1.0em; /* Reduced font size */
+  font-weight: 600;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color var(--transition-speed-fast);
+}
+
+.contactValue:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .mainHeader {
+    padding: 15px 0;
+  }
+  .brandInfo {
+    gap: 10px;
+  }
+  .logoImg {
+    height: 65px;
+  }
+  .orgName {
+    font-size: 2.1em;
+  }
+  .slogan {
+    font-size: 0.9em;
+  }
+  .contactDetails {
+    gap: 15px;
+    margin-top: 15px; /* Reduced margin */
+  }
+  .contactIcon {
+    font-size: 1.4em;
+  }
+  .contactLabel {
+    font-size: 0.8em;
+  }
+  .contactValue {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainHeader {
+    padding: 12px 0;
+  }
+  .container {
+    gap: 15px;
+    padding: 0 15px;
+  }
+  .brandInfo {
+    gap: 8px;
+  }
+  .logoImg {
+    height: 55px;
+  }
+  .orgName {
+    font-size: 1.8em;
+  }
+  .slogan {
+    font-size: 0.85em;
+  }
+  .contactDetails {
+    margin-top: 0;
+  }
+  .contactItem {
+    gap: 10px;
+  }
+  .contactIcon {
+    font-size: 1.3em;
+  }
+  .contactValue {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainHeader {
+    padding: 10px 0;
+  }
+  .logoImg {
+    height: 48px;
+  }
+  .orgName {
+    font-size: 1.5em;
+  }
+  .slogan {
+    font-size: 0.8em;
+  }
+  .contactIcon {
+    font-size: 1.2em;
+  }
+  .contactValue {
+    font-size: 0.85em;
+  }
+}
